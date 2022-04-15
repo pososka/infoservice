@@ -29,4 +29,8 @@ export const authAPI = {
   logout() {
     return axios.post('/api/logout');
   },
+
+  sendVerificationEmail() {
+    return axios.post('/api/email/verification-notification');
+  },
 };

@@ -1,5 +1,6 @@
 <script>
-import axios from 'axios';
+import { mapActions } from 'vuex';
+
 import Alert from '../../components/Alert.vue';
 
 export default {
@@ -10,10 +11,13 @@ export default {
     isSend: false,
   }),
   methods: {
-    sendVerification() {
+    ...mapActions({
+      sendVerificationEmail: 'auth/sendVerificationEmail',
+    }),
+    resend() {
       this.isSend = true;
 
-      axios.post('/api/email/verification-notification');
+      this.sendVerificationEmail();
     },
   },
 };
@@ -40,7 +44,7 @@ export default {
 
             <button
               :disabled="isSend"
-              @click="sendVerification"
+              @click="resend"
               class="btn btn-link p-0 m-0 align-baseline"
             >
               click here to request another

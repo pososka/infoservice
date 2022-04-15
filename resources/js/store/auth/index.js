@@ -158,6 +158,10 @@ const auth = {
         })
         .then(callback);
     },
+
+    sendVerificationEmail() {
+      authAPI.sendVerificationEmail();
+    },
   },
 };
 

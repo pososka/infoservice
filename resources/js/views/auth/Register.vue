@@ -12,6 +12,7 @@ export default {
   }),
   computed: {
     ...mapGetters({
+      isAuth: 'auth/isAuth',
       getErrorName: 'auth/getErrorName',
       getErrorEmail: 'auth/getErrorEmail',
       getErrorPassword: 'auth/getErrorPassword',
@@ -31,6 +32,11 @@ export default {
         },
       });
     },
+  },
+  mounted() {
+    if (this.isAuth) {
+      this.$router.push('/');
+    }
   },
 };
 </script>

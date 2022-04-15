@@ -10,7 +10,7 @@ export default {
   data: () => ({
     form: {
       name: '',
-      phone: '',
+      phone: '+7',
       company: '',
       title: '',
       message: '',
@@ -44,7 +44,7 @@ export default {
         ...this.form,
         callback: () => {
           this.form.name = '';
-          this.form.phone = '';
+          this.form.phone = '+7';
           this.form.company = '';
           this.form.title = '';
           this.form.message = '';
@@ -63,7 +63,7 @@ export default {
 
 <template>
   <div class="container">
-    <h1 class="mb-5 text-center">Create Feedback</h1>
+    <h1 class="mb-5 text-center">Feedback</h1>
 
     <div class="row justify-content-center">
       <div class="col-md-6">

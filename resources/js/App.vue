@@ -7,7 +7,7 @@ export default {
       primary: [
         {
           to: '/',
-          name: 'Home',
+          name: 'Feedback',
         },
         {
           to: '/feedback',

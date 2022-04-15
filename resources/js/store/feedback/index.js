@@ -113,8 +113,6 @@ const feedback = {
       feedbackAPI
         .create(name, phone, company, title, message, file)
         .then((response) => {
-          commit('setInfo', { has: false });
-
           if (response.data.success) {
             commit('setInfo', {
               has: true,
