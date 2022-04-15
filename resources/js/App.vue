@@ -1,7 +1,14 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
+import Menu from './components/Menu.vue';
+import Button from './components/Button.vue';
+
 export default {
+  components: {
+    Menu,
+    Button,
+  },
   data: () => ({
     menu: {
       primary: [
@@ -49,27 +56,20 @@ export default {
       <div class="container-lg">
         <router-link class="navbar-brand" to="/">InfoService</router-link>
 
-        <button
+        <Button
           class="navbar-toggler"
-          type="button"
           data-bs-toggle="collapse"
           data-bs-target="#header-navbar-1"
         >
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </Button>
 
         <div
           v-if="isAuth"
           class="collapse navbar-collapse"
           id="header-navbar-1"
         >
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li v-for="link in menu.primary" :key="link.to" class="nav-item">
-              <router-link class="nav-link" :to="link.to" active-class="active">
-                {{ link.name }}
-              </router-link>
-            </li>
-          </ul>
+          <Menu :links="menu.primary" class="me-auto mb-2 mb-lg-0" />
 
           <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
@@ -84,22 +84,16 @@ export default {
               </a>
 
               <div class="dropdown-menu dropdown-menu-end">
-                <button class="dropdown-item" @click="logoutHandler">
+                <Button class="dropdown-item" @click="logoutHandler">
                   Logout
-                </button>
+                </Button>
               </div>
             </li>
           </ul>
         </div>
 
         <div v-else class="collapse navbar-collapse" id="header-navbar-1">
-          <ul class="navbar-nav ms-auto">
-            <li v-for="link in menu.auth" :key="link.to" class="nav-item">
-              <router-link class="nav-link" :to="link.to" active-class="active">
-                {{ link.name }}
-              </router-link>
-            </li>
-          </ul>
+          <Menu :links="menu.auth" class="ms-auto" />
         </div>
       </div>
     </nav>

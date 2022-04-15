@@ -1,7 +1,12 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
+import Button from '../../components/Button.vue';
+
 export default {
+  components: {
+    Button,
+  },
   data: () => ({
     form: {
       name: '',
@@ -145,18 +150,13 @@ export default {
 
               <div class="row mb-0">
                 <div class="col-md-6 offset-md-4">
-                  <button
+                  <Button
                     type="submit"
-                    :disabled="getIsLoading"
-                    class="btn btn-primary"
+                    class="btn-primary"
+                    :hasLoader="getIsLoading"
                   >
                     Register
-
-                    <span
-                      v-if="getIsLoading"
-                      class="spinner-border spinner-border-sm"
-                    ></span>
-                  </button>
+                  </Button>
                 </div>
               </div>
             </form>

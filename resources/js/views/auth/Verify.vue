@@ -2,10 +2,12 @@
 import { mapActions } from 'vuex';
 
 import Alert from '../../components/Alert.vue';
+import Button from '../../components/Button.vue';
 
 export default {
   components: {
     Alert,
+    Button,
   },
   data: () => ({
     isSend: false,
@@ -42,13 +44,13 @@ export default {
             </p>
             <p>If you did not receive the email</p>
 
-            <button
+            <Button
+              class="btn-link p-0 m-0 align-baseline"
               :disabled="isSend"
               @click="resend"
-              class="btn btn-link p-0 m-0 align-baseline"
             >
               click here to request another
-            </button>
+            </Button>
           </div>
         </div>
       </div>

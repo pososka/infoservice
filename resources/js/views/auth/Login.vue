@@ -1,7 +1,12 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
+import Button from '../../components/Button.vue';
+
 export default {
+  components: {
+    Button,
+  },
   data: () => ({
     form: {
       email: '',
@@ -42,7 +47,7 @@ export default {
 <template>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="col-md-6">
         <div class="card">
           <div class="card-header">Login</div>
 
@@ -118,18 +123,13 @@ export default {
 
               <div class="row mb-0">
                 <div class="col-md-8 offset-md-4">
-                  <button
+                  <Button
                     type="submit"
-                    :disabled="getIsLoading"
-                    class="btn btn-primary"
+                    class="btn-primary"
+                    :hasLoader="getIsLoading"
                   >
                     Login
-
-                    <span
-                      v-if="getIsLoading"
-                      class="spinner-border spinner-border-sm"
-                    ></span>
-                  </button>
+                  </Button>
 
                   <!-- <a class="btn btn-link" href="#">Forgot Your Password?</a> -->
                 </div>

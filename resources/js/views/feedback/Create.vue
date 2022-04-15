@@ -2,10 +2,12 @@
 import { mapActions, mapGetters } from 'vuex';
 
 import Alert from '../../components/Alert.vue';
+import Button from '../../components/Button.vue';
 
 export default {
   components: {
     Alert,
+    Button,
   },
   data: () => ({
     form: {
@@ -20,6 +22,7 @@ export default {
   computed: {
     ...mapGetters({
       isAuth: 'auth/isAuth',
+      getUserName: 'auth/getUserName',
       getInfoHas: 'feedback/getInfoHas',
       getInfoType: 'feedback/getInfoType',
       getInfoMessage: 'feedback/getInfoMessage',
@@ -56,6 +59,8 @@ export default {
   mounted() {
     if (!this.isAuth) {
       this.$router.push('/login');
+    } else {
+      this.form.name = this.getUserName;
     }
   },
 };
@@ -185,18 +190,9 @@ export default {
           </div>
 
           <div class="form-group">
-            <button
-              type="submit"
-              :disabled="getIsLoading"
-              class="btn btn-primary"
-            >
+            <Button type="submit" class="btn-primary" :hasLoader="getIsLoading">
               Send
-
-              <span
-                v-if="getIsLoading"
-                class="spinner-border spinner-border-sm"
-              ></span>
-            </button>
+            </Button>
           </div>
         </form>
       </div>

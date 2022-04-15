@@ -1,22 +1,18 @@
 <script>
 export default {
   props: {
-    classes: {
-      type: String,
-      default: 'navbar-nav',
-    },
     links: {
-      type: [String],
-      default: [],
+      type: Array,
+      required: true,
     },
   },
 };
 </script>
 
 <template>
-  <ul :class="classes">
+  <ul class="navbar-nav">
     <li v-for="link in links" :key="link.to" class="nav-item">
-      <router-link class="nav-link" :to="link.to">
+      <router-link class="nav-link" :to="link.to" active-class="active">
         {{ link.name }}
       </router-link>
     </li>
