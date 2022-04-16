@@ -20,18 +20,14 @@ export default {
     }),
   },
   mounted() {
-    if (!this.isAuth) {
-      this.$router.push('/login');
-    } else {
-      this.loadFeedbacks();
-    }
+    this.loadFeedbacks();
   },
 };
 </script>
 
 <template>
   <div class="container">
-    <h1 class="mb-5 text-center">My Feedback</h1>
+    <h1 class="mb-5 text-center">My Feedbacks</h1>
 
     <div class="row justify-content-center">
       <div v-if="getIsLoading" class="col-md-6">

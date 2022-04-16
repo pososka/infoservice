@@ -46,7 +46,7 @@ export default {
       this.create({
         ...this.form,
         callback: () => {
-          this.form.name = '';
+          this.form.name = this.getUserName;
           this.form.phone = '+7';
           this.form.company = '';
           this.form.title = '';
@@ -57,11 +57,7 @@ export default {
     },
   },
   mounted() {
-    if (!this.isAuth) {
-      this.$router.push('/login');
-    } else {
-      this.form.name = this.getUserName;
-    }
+    this.form.name = this.getUserName;
   },
 };
 </script>
@@ -90,7 +86,6 @@ export default {
               }"
               type="text"
               id="name"
-              name="name"
               v-model="form.name"
             />
 
@@ -108,7 +103,6 @@ export default {
               }"
               type="text"
               id="phone"
-              name="phone"
               v-model="form.phone"
             />
 
@@ -126,7 +120,6 @@ export default {
               }"
               type="text"
               id="company"
-              name="company"
               v-model="form.company"
             />
 
@@ -144,7 +137,6 @@ export default {
               }"
               type="text"
               id="title"
-              name="title"
               v-model="form.title"
             />
 
@@ -161,7 +153,6 @@ export default {
                 'is-invalid': getErrorMessage,
               }"
               id="message"
-              name="message"
               rows="5"
               v-model="form.message"
             ></textarea>

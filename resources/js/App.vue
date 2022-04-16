@@ -11,26 +11,14 @@ export default {
   },
   data: () => ({
     menu: {
-      primary: [
-        {
-          to: '/',
-          name: 'Feedback',
-        },
-        {
-          to: '/feedback',
-          name: 'My Feedbacks',
-        },
-      ],
-      auth: [
-        {
-          to: '/login',
-          name: 'Login',
-        },
-        {
-          to: '/register',
-          name: 'Register',
-        },
-      ],
+      primary: {
+        Home: 'Feedback',
+        Feedbacks: 'My Feedbacks',
+      },
+      auth: {
+        Login: 'Login',
+        Register: 'Register',
+      },
     },
   }),
   computed: mapGetters({
@@ -43,7 +31,7 @@ export default {
     }),
     logoutHandler() {
       this.logout(() => {
-        this.$router.push('/login');
+        this.$router.push({ name: 'Login' });
       });
     },
   },

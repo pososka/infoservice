@@ -31,15 +31,10 @@ export default {
         ...this.form,
 
         callback: () => {
-          this.$router.push('/');
+          this.$router.push({ name: 'Home' });
         },
       });
     },
-  },
-  mounted() {
-    if (this.isAuth) {
-      this.$router.push('/');
-    }
   },
 };
 </script>
@@ -64,7 +59,6 @@ export default {
                   <input
                     id="email"
                     type="email"
-                    name="email"
                     :class="{
                       'form-control': true,
                       'is-invalid': getErrorEmail,
@@ -90,7 +84,6 @@ export default {
                   <input
                     id="password"
                     type="password"
-                    name="password"
                     :class="{
                       'form-control': true,
                       'is-invalid': getErrorPassword,

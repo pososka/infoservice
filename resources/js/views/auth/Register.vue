@@ -33,15 +33,10 @@ export default {
         ...this.form,
 
         callback: () => {
-          this.$router.push('/verify');
+          this.$router.push({ name: 'Verify' });
         },
       });
     },
-  },
-  mounted() {
-    if (this.isAuth) {
-      this.$router.push('/');
-    }
   },
 };
 </script>
@@ -66,7 +61,6 @@ export default {
                   <input
                     id="name"
                     type="text"
-                    name="name"
                     :class="{
                       'form-control': true,
                       'is-invalid': getErrorName,
@@ -89,7 +83,6 @@ export default {
                   <input
                     id="email"
                     type="email"
-                    name="email"
                     :class="{
                       'form-control': true,
                       'is-invalid': getErrorEmail,
@@ -115,7 +108,6 @@ export default {
                   <input
                     id="password"
                     type="password"
-                    name="password"
                     :class="{
                       'form-control': true,
                       'is-invalid': getErrorPassword,
@@ -141,7 +133,6 @@ export default {
                   <input
                     id="password-confirm"
                     type="password"
-                    name="password-confirm"
                     class="form-control"
                     v-model="form.confirm"
                   />

@@ -2,7 +2,7 @@
 export default {
   props: {
     links: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },
@@ -11,9 +11,9 @@ export default {
 
 <template>
   <ul class="navbar-nav">
-    <li v-for="link in links" :key="link.to" class="nav-item">
-      <router-link class="nav-link" :to="link.to" active-class="active">
-        {{ link.name }}
+    <li v-for="(title, name) in links" :key="name" class="nav-item">
+      <router-link class="nav-link" :to="{ name }" active-class="active">
+        {{ title }}
       </router-link>
     </li>
   </ul>
