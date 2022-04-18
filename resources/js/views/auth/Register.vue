@@ -2,10 +2,12 @@
 import { mapActions, mapGetters } from 'vuex';
 
 import Button from '../../components/Button.vue';
+import Input from '../../components/Input.vue';
 
 export default {
   components: {
     Button,
+    Input,
   },
   data: () => ({
     form: {
@@ -58,19 +60,14 @@ export default {
                 </label>
 
                 <div class="col-md-6">
-                  <input
+                  <Input
                     id="name"
                     type="text"
-                    :class="{
-                      'form-control': true,
-                      'is-invalid': getErrorName,
-                    }"
+                    class="form-control"
+                    :hasError="!!getErrorName"
+                    :errorMessage="getErrorName"
                     v-model="form.name"
                   />
-
-                  <div v-if="getErrorName" class="invalid-feedback">
-                    {{ getErrorName }}
-                  </div>
                 </div>
               </div>
 
@@ -80,19 +77,14 @@ export default {
                 </label>
 
                 <div class="col-md-6">
-                  <input
+                  <Input
                     id="email"
                     type="email"
-                    :class="{
-                      'form-control': true,
-                      'is-invalid': getErrorEmail,
-                    }"
+                    class="form-control"
+                    :hasError="!!getErrorEmail"
+                    :errorMessage="getErrorEmail"
                     v-model="form.email"
                   />
-
-                  <div v-if="getErrorEmail" class="invalid-feedback">
-                    {{ getErrorEmail }}
-                  </div>
                 </div>
               </div>
 
@@ -105,19 +97,14 @@ export default {
                 </label>
 
                 <div class="col-md-6">
-                  <input
+                  <Input
                     id="password"
                     type="password"
-                    :class="{
-                      'form-control': true,
-                      'is-invalid': getErrorPassword,
-                    }"
+                    class="form-control"
+                    :hasError="!!getErrorPassword"
+                    :errorMessage="getErrorPassword"
                     v-model="form.password"
                   />
-
-                  <div v-if="getErrorPassword" class="invalid-feedback">
-                    {{ getErrorPassword }}
-                  </div>
                 </div>
               </div>
 
@@ -130,7 +117,7 @@ export default {
                 </label>
 
                 <div class="col-md-6">
-                  <input
+                  <Input
                     id="password-confirm"
                     type="password"
                     class="form-control"

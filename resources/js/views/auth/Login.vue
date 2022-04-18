@@ -2,10 +2,12 @@
 import { mapActions, mapGetters } from 'vuex';
 
 import Button from '../../components/Button.vue';
+import Input from '../../components/Input.vue';
 
 export default {
   components: {
     Button,
+    Input,
   },
   data: () => ({
     form: {
@@ -56,19 +58,14 @@ export default {
                 </label>
 
                 <div class="col-md-6">
-                  <input
+                  <Input
                     id="email"
                     type="email"
-                    :class="{
-                      'form-control': true,
-                      'is-invalid': getErrorEmail,
-                    }"
+                    class="form-control"
+                    :hasError="!!getErrorEmail"
+                    :errorMessage="getErrorEmail"
                     v-model="form.email"
                   />
-
-                  <div v-if="getErrorEmail" class="invalid-feedback">
-                    {{ getErrorEmail }}
-                  </div>
                 </div>
               </div>
 
@@ -81,29 +78,24 @@ export default {
                 </label>
 
                 <div class="col-md-6">
-                  <input
+                  <Input
                     id="password"
                     type="password"
-                    :class="{
-                      'form-control': true,
-                      'is-invalid': getErrorPassword,
-                    }"
+                    class="form-control"
+                    :hasError="!!getErrorPassword"
+                    :errorMessage="getErrorPassword"
                     v-model="form.password"
                   />
-
-                  <div v-if="getErrorPassword" class="invalid-feedback">
-                    {{ getErrorPassword }}
-                  </div>
                 </div>
               </div>
 
               <div class="row mb-3">
                 <div class="col-md-6 offset-md-4">
                   <div class="form-check">
-                    <input
+                    <Input
                       class="form-check-input"
-                      type="checkbox"
                       id="remember"
+                      type="checkbox"
                       v-model="form.remember"
                     />
 

@@ -3,11 +3,15 @@ import { mapActions, mapGetters } from 'vuex';
 
 import Alert from '../../components/Alert.vue';
 import Button from '../../components/Button.vue';
+import Input from '../../components/Input.vue';
+import Textarea from '../../components/Textarea.vue';
 
 export default {
   components: {
     Alert,
     Button,
+    Input,
+    Textarea,
   },
   data: () => ({
     form: {
@@ -79,105 +83,75 @@ export default {
 
           <div class="form-group mb-3">
             <label class="form-label" for="name">Name</label>
-            <input
-              :class="{
-                'form-control': true,
-                'is-invalid': getErrorName,
-              }"
-              type="text"
+            <Input
               id="name"
+              type="text"
+              class="form-control"
+              :hasError="!!getErrorName"
+              :errorMessage="getErrorName"
               v-model="form.name"
             />
-
-            <div v-if="getErrorName" class="invalid-feedback">
-              {{ getErrorName }}
-            </div>
           </div>
 
           <div class="form-group mb-3">
             <label class="form-label" for="phone">Phone</label>
-            <input
-              :class="{
-                'form-control': true,
-                'is-invalid': getErrorPhone,
-              }"
-              type="text"
+            <Input
               id="phone"
+              type="text"
+              class="form-control"
+              :hasError="!!getErrorPhone"
+              :errorMessage="getErrorPhone"
               v-model="form.phone"
             />
-
-            <div v-if="getErrorPhone" class="invalid-feedback">
-              {{ getErrorPhone }}
-            </div>
           </div>
 
           <div class="form-group mb-3">
             <label class="form-label" for="company">Company</label>
-            <input
-              :class="{
-                'form-control': true,
-                'is-invalid': getErrorCompany,
-              }"
-              type="text"
+            <Input
               id="company"
+              type="text"
+              class="form-control"
+              :hasError="!!getErrorCompany"
+              :errorMessage="getErrorCompany"
               v-model="form.company"
             />
-
-            <div v-if="getErrorCompany" class="invalid-feedback">
-              {{ getErrorCompany }}
-            </div>
           </div>
 
           <div class="form-group mb-3">
             <label class="form-label" for="title">Title</label>
-            <input
-              :class="{
-                'form-control': true,
-                'is-invalid': getErrorTitle,
-              }"
-              type="text"
+            <Input
               id="title"
+              type="text"
+              class="form-control"
+              :hasError="!!getErrorTitle"
+              :errorMessage="getErrorTitle"
               v-model="form.title"
             />
-
-            <div v-if="getErrorTitle" class="invalid-feedback">
-              {{ getErrorTitle }}
-            </div>
           </div>
 
           <div class="form-group mb-3">
             <label class="form-label" for="message">Message</label>
-            <textarea
-              :class="{
-                'form-control': true,
-                'is-invalid': getErrorMessage,
-              }"
+            <Textarea
               id="message"
+              class="form-control"
               rows="5"
+              :hasError="!!getErrorMessage"
+              :errorMessage="getErrorMessage"
               v-model="form.message"
-            ></textarea>
-
-            <div v-if="getErrorMessage" class="invalid-feedback">
-              {{ getErrorMessage }}
-            </div>
+            />
           </div>
 
           <div class="form-group mb-3">
             <label class="form-label" for="file">File</label>
-            <input
-              :class="{
-                'form-control': true,
-                'is-invalid': getErrorFile,
-              }"
-              type="file"
+            <Input
               id="file"
+              type="file"
+              class="form-control"
               accept="image/png, image/jpeg, image/gif, .pdf, .txt"
-              @change="fileUploaded"
+              :hasError="!!getErrorFile"
+              :errorMessage="getErrorFile"
+              @input="fileUploaded"
             />
-
-            <div v-if="getErrorFile" class="invalid-feedback">
-              {{ getErrorFile }}
-            </div>
           </div>
 
           <div class="form-group">

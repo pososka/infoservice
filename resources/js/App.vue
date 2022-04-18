@@ -21,10 +21,12 @@ export default {
       },
     },
   }),
-  computed: mapGetters({
-    getUserName: 'auth/getUserName',
-    isAuth: 'auth/isAuth',
-  }),
+  computed: {
+    ...mapGetters({
+      getUserName: 'auth/getUserName',
+      isAuth: 'auth/isAuth',
+    }),
+  },
   methods: {
     ...mapActions({
       logout: 'auth/logout',
